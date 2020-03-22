@@ -1,5 +1,6 @@
 import React from "react";
 import Nav from "./components/Nav";
+import Main from "./components/Main";
 
 class App extends React.Component {
   constructor() {
@@ -7,7 +8,12 @@ class App extends React.Component {
   }
 
   render() {
-    return <Nav />;
+    return (
+      <div>
+        <Nav />
+        <Main />
+      </div>
+    );
   }
 }
 
