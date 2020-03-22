@@ -1,9 +1,20 @@
 import React from "react";
+import API from "./utils/Api";
 
 class EmployeeTable extends React.Component {
-  constructor() {
-    super();
+  state = {
+    employees: [{}]
+  };
+
+  componentDidMount() {
+    API.getUsers().then(res => {
+      this.setState({
+        employees: res.data.results
+      });
+      console.log(this.state.employees);
+    });
   }
+
   render() {
     return (
       <table className="table">

@@ -9,7 +9,7 @@ class Main extends React.Component {
     return (
       <div>
         <input
-          class="form-control form-control-lg"
+          className="form-control form-control-lg"
           type="text"
           placeholder="Enter the Employee name"
         ></input>
