@@ -33,7 +33,12 @@ class EmployeeTable extends React.Component {
         </thead>
         <tbody>
           <tr className="table-active">
-            <th scope="row">1</th>
+            <td data-th="Image" className="align-middle">
+              <img
+                src={this.state.employees[0].picture.medium}
+                className="img-responsive"
+              />
+            </td>
             <td>
               {this.state.employees[0].name.first}{" "}
               {this.state.employees[0].name.last}
