@@ -3,20 +3,24 @@ import API from "./utils/Api";
 
 class EmployeeTable extends React.Component {
   state = {
+    isLoading: true,
     employees: [{}]
   };
 
   componentDidMount() {
     API.getUsers().then(res => {
       this.setState({
-        employees: res.data.results
+        employees: res.data.results,
+        isLoading: false
       });
       console.log(this.state.employees);
     });
   }
 
   render() {
-    return (
+    return this.state.isLoading ? (
+      <h3>Loading...</h3>
+    ) : (
       <table className="table">
         <thead>
           <tr>
@@ -30,10 +34,13 @@ class EmployeeTable extends React.Component {
         <tbody>
           <tr className="table-active">
             <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>something</td>
+            <td>
+              {this.state.employees[0].name.first}{" "}
+              {this.state.employees[0].name.last}
+            </td>
+            <td>{this.state.employees[0].phone}</td>
+            <td>{this.state.employees[0].email}</td>
+            <td>{this.state.employees[0].dob.date}</td>
           </tr>
         </tbody>
       </table>
