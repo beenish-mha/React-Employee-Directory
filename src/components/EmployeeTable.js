@@ -63,23 +63,17 @@ class EmployeeTable extends React.Component {
           </thead>
           <tbody>
             {this.state.people.map(person => (
-              <div>
-                {" "}
-                <tr key={person.id} className="table-active">
-                  <td data-th="Image" className="align-middle">
-                    <img
-                      src={person.picture.medium}
-                      className="img-responsive"
-                    />
-                  </td>
-                  <td>
-                    {person.name.first} {person.name.last}
-                  </td>
-                  <td>{person.phone}</td>
-                  <td>{person.email}</td>
-                  <td>{this.formatDate(person.dob.date)}</td>
-                </tr>
-              </div>
+              <tr key={person.id} className="table-active">
+                <td data-th="Image" className="align-middle">
+                  <img src={person.picture.medium} className="img-responsive" />
+                </td>
+                <td>
+                  {person.name.first} {person.name.last}
+                </td>
+                <td>{person.phone}</td>
+                <td>{person.email}</td>
+                <td>{this.formatDate(person.dob.date)}</td>
+              </tr>
             ))}
           </tbody>
         </table>
