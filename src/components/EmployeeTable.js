@@ -4,16 +4,19 @@ import API from "./utils/Api";
 class EmployeeTable extends React.Component {
   state = {
     isLoading: true,
-    employees: [{}]
+    employees: [{}],
+    people: []
   };
 
   componentDidMount() {
     API.getUsers().then(res => {
       this.setState({
+        people: res.data.results,
         employees: res.data.results,
 
         isLoading: false
       });
+
       //console.log(this.state.employees);
     });
   }
@@ -29,8 +32,13 @@ class EmployeeTable extends React.Component {
   }
 
   render() {
-    const { name } = this.state.employees[0];
-    console.log(name);
+    const data = this.state.employees;
+    const nameList = data.map(name => {
+      return name.name;
+    });
+    console.log(nameList[0]);
+    // const { name } = this.state.employees[0];
+    //console.log(name);
 
     return this.state.isLoading ? (
       <h3>Loading...</h3>
@@ -38,7 +46,7 @@ class EmployeeTable extends React.Component {
       <div>
         <form>
           <input
-            class="form-control form-control-lg"
+            className="form-control form-control-lg"
             type="text"
             placeholder="Employee Name"
           />
@@ -54,21 +62,25 @@ class EmployeeTable extends React.Component {
             </tr>
           </thead>
           <tbody>
-            <tr key={this.state.employees[0].id.name} className="table-active">
-              <td data-th="Image" className="align-middle">
-                <img
-                  src={this.state.employees[0].picture.medium}
-                  className="img-responsive"
-                />
-              </td>
-              <td>
-                {this.state.employees[0].name.first}{" "}
-                {this.state.employees[0].name.last}
-              </td>
-              <td>{this.state.employees[0].phone}</td>
-              <td>{this.state.employees[0].email}</td>
-              <td>{this.formatDate(this.state.employees[0].dob.date)}</td>
-            </tr>
+            {this.state.people.map(person => (
+              <div>
+                {" "}
+                <tr key={person.id} className="table-active">
+                  <td data-th="Image" className="align-middle">
+                    <img
+                      src={person.picture.medium}
+                      className="img-responsive"
+                    />
+                  </td>
+                  <td>
+                    {person.name.first} {person.name.last}
+                  </td>
+                  <td>{person.phone}</td>
+                  <td>{person.email}</td>
+                  <td>{this.formatDate(person.dob.date)}</td>
+                </tr>
+              </div>
+            ))}
           </tbody>
         </table>
       </div>
