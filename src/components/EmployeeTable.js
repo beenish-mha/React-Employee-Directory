@@ -4,20 +4,24 @@ import API from "./utils/Api";
 class EmployeeTable extends React.Component {
   state = {
     isLoading: true,
-    employees: [{}],
-    people: []
+    search: "",
+    employees: []
   };
+  updateSearch(event) {
+    this.setState({
+      search: event.target.value
+    });
+  }
 
   componentDidMount() {
     API.getUsers().then(res => {
       this.setState({
-        people: res.data.results,
         employees: res.data.results,
 
         isLoading: false
       });
 
-      //console.log(this.state.employees);
+      console.log(this.state.employees);
     });
   }
 
@@ -32,13 +36,9 @@ class EmployeeTable extends React.Component {
   }
 
   render() {
-    const data = this.state.employees;
-    const nameList = data.map(name => {
-      return name.name;
+    let filteredEmployee = this.state.employees.filter(person => {
+      return person.name.first.indexOf(this.state.search) !== -1;
     });
-    console.log(nameList[0]);
-    // const { name } = this.state.employees[0];
-    //console.log(name);
 
     return this.state.isLoading ? (
       <h3>Loading...</h3>
@@ -46,8 +46,10 @@ class EmployeeTable extends React.Component {
       <div>
         <form>
           <input
-            className="form-control form-control-lg"
+            className="input"
             type="text"
+            value={this.state.search}
+            onChange={this.updateSearch.bind(this)}
             placeholder="Employee Name"
           />
         </form>
@@ -62,7 +64,7 @@ class EmployeeTable extends React.Component {
             </tr>
           </thead>
           <tbody>
-            {this.state.people.map(person => (
+            {filteredEmployee.map(person => (
               <tr key={person.id} className="table-active">
                 <td data-th="Image" className="align-middle">
                   <img src={person.picture.medium} className="img-responsive" />
