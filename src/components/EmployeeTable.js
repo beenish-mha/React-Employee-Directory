@@ -18,6 +18,16 @@ class EmployeeTable extends React.Component {
     });
   }
 
+  formatDate(date) {
+    const dateArray = date.split("-");
+    const year = dateArray[0];
+    const month = dateArray[1];
+    const dayArray = dateArray[2].split("T");
+    const day = dayArray[0];
+    const formattedDate = [month, day, year].join("-");
+    return formattedDate;
+  }
+
   render() {
     const { name } = this.state.employees[0];
     console.log(name);
@@ -57,7 +67,7 @@ class EmployeeTable extends React.Component {
               </td>
               <td>{this.state.employees[0].phone}</td>
               <td>{this.state.employees[0].email}</td>
-              <td>{this.state.employees[0].dob.date}</td>
+              <td>{this.formatDate(this.state.employees[0].dob.date)}</td>
             </tr>
           </tbody>
         </table>
