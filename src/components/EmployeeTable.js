@@ -38,7 +38,7 @@ class EmployeeTable extends React.Component {
   render() {
     let filteredEmployee = this.state.employees.filter(person => {
       return (
-        person.name.first
+        `${person.name.first} ${person.name.last}`
           .toLowerCase()
           .indexOf(this.state.search.toLowerCase()) !== -1
       );
