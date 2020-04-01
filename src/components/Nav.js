@@ -6,8 +6,8 @@ class Nav extends React.Component {
   }
   render() {
     return (
-      <nav className="navbar navbar-light bg-dark">
-        <span className="navbar-brand mb-0 h1">Employee Directory</span>
+      <nav className="navbar  navbar-light bg-dark">
+        <h2 className="nav-heading">Employees Directory</h2>
       </nav>
     );
   }

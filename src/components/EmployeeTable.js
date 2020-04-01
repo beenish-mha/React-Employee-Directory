@@ -31,7 +31,7 @@ class EmployeeTable extends React.Component {
     const month = dateArray[1];
     const dayArray = dateArray[2].split("T");
     const day = dayArray[0];
-    const formattedDate = [month, day, year].join("-");
+    const formattedDate = [day, month, year].join("-");
     return formattedDate;
   }
 
@@ -54,7 +54,7 @@ class EmployeeTable extends React.Component {
             type="text"
             value={this.state.search}
             onChange={this.updateSearch.bind(this)}
-            placeholder="Employee Name"
+            placeholder="Search Employee"
           />
         </form>
         <table className="table">

@@ -1,0 +1,12 @@
+.input {
+  margin-left: 250px;
+  padding: 20px;
+  align-self: center;
+  block-size: 70px;
+  width: 60%;
+}
+
+.nav-heading {
+  color: rgb(165, 165, 164);
+  margin-left: 35%;
+}
