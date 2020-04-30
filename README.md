@@ -17,7 +17,7 @@ By entering the employee's name in a text box will bring the details of the pert
 
 ## References
 
-[Deployed on Heroku](https://team-phoenix-project2.herokuapp.com/)
+[Deployed on Heroku](https://react-employee-directory-b.herokuapp.com/)
 
 ---
 
