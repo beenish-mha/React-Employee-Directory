@@ -9,9 +9,9 @@ By entering the employee's name in a text box will bring the details of the pert
 
 ---
 
-![screenshot of the app](public\ReactEmployeesDirectory1.jpg)
+![screenshot of the app](https://github.com/beenish-mha/React-Employee-Directory/blob/master/public/ReactEmployeesDirectory1.jpg)
 
-![screenshot of the app](public\ReactEmployeesDirectory1.jpg)
+![screenshot of the app](https://github.com/beenish-mha/React-Employee-Directory/blob/master/public/ReactEmployeesDirectory2.jpg)
 
 ---
 
